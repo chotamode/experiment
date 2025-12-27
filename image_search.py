@@ -6,7 +6,12 @@ import os
 import time
 import random
 from typing import List, Dict
-from duckduckgo_search import DDGS
+
+try:
+    from ddgs import DDGS
+except ImportError:
+    # Fallback to old package name
+    from duckduckgo_search import DDGS
 
 
 class ImageSearcher:
@@ -16,42 +21,63 @@ class ImageSearcher:
         self.cache_dir = cache_dir
         os.makedirs(cache_dir, exist_ok=True)
 
-    def search_duckduckgo(self, query: str, max_results: int = 20) -> List[Dict]:
+    def search_duckduckgo(self, query: str, max_results: int = 20, retry_count: int = 3) -> List[Dict]:
         """
-        Search for images using DuckDuckGo
+        Search for images using DuckDuckGo with retry logic
 
         Args:
             query: Search query (kanji or any text)
             max_results: Maximum number of results to return
+            retry_count: Number of retries on rate limit (default: 3)
 
         Returns:
             List of image dictionaries with 'url', 'title', 'thumbnail' keys
         """
         results = []
 
-        try:
-            with DDGS() as ddgs:
-                # Add small delay to be respectful
-                time.sleep(random.uniform(0.5, 1.5))
+        for attempt in range(retry_count):
+            try:
+                # Add delay before search to avoid rate limiting
+                if attempt > 0:
+                    # Exponential backoff on retry
+                    delay = (2 ** attempt) + random.uniform(1, 3)
+                    print(f"  Rate limited, waiting {delay:.1f}s before retry {attempt + 1}/{retry_count}...")
+                    time.sleep(delay)
+                else:
+                    # Initial delay
+                    time.sleep(random.uniform(2, 4))
 
-                images = ddgs.images(
-                    keywords=query,
-                    max_results=max_results,
-                    safesearch='off'  # Get more varied results
-                )
+                with DDGS() as ddgs:
+                    images = ddgs.images(
+                        keywords=query,
+                        max_results=max_results,
+                        safesearch='off'  # Get more varied results
+                    )
 
-                for img in images:
-                    results.append({
-                        'url': img.get('image', ''),
-                        'title': img.get('title', ''),
-                        'thumbnail': img.get('thumbnail', ''),
-                        'source': img.get('source', ''),
-                        'width': img.get('width', 0),
-                        'height': img.get('height', 0)
-                    })
+                    for img in images:
+                        results.append({
+                            'url': img.get('image', ''),
+                            'title': img.get('title', ''),
+                            'thumbnail': img.get('thumbnail', ''),
+                            'source': img.get('source', ''),
+                            'width': img.get('width', 0),
+                            'height': img.get('height', 0)
+                        })
 
-        except Exception as e:
-            print(f"Error searching for '{query}': {e}")
+                # If we got results, break out of retry loop
+                if results:
+                    break
+
+            except Exception as e:
+                error_msg = str(e)
+                if '202' in error_msg or 'Ratelimit' in error_msg:
+                    if attempt < retry_count - 1:
+                        continue  # Try again
+                    else:
+                        print(f"Rate limit exceeded for '{query}' after {retry_count} attempts")
+                else:
+                    print(f"Error searching for '{query}': {e}")
+                    break
 
         return results
 
@@ -78,9 +104,6 @@ class ImageSearcher:
                 result['query'] = query
 
             all_results.extend(results)
-
-            # Be respectful with rate limiting
-            time.sleep(random.uniform(1, 2))
 
         return all_results
 
