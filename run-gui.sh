@@ -1,13 +1,12 @@
 #!/bin/bash
-# Quick Start Script for Kanji Collage Generator
-# Usage: ./run.sh [optional arguments for main.py]
+# GUI Launcher for Kanji Collage Generator (Linux/Mac)
 
 set -e
 
 VENV_DIR=".venv"
 
-echo "🎨 Kanji Collage Generator - Quick Start"
-echo "========================================"
+echo "🎨 Kanji Collage Generator - GUI"
+echo "================================"
 echo ""
 
 # Check if virtual environment exists
@@ -31,11 +30,6 @@ if [ ! -d "$VENV_DIR" ]; then
     echo ""
 fi
 
-# Run the application
-echo "🚀 Running Kanji Collage Generator..."
-echo ""
-
-"$VENV_DIR/bin/python" main.py "$@"
-
-echo ""
-echo "✨ Done! Check the downloads/ folder for your collage."
+# Run the GUI
+echo "🚀 Launching GUI..."
+"$VENV_DIR/bin/python" gui.py

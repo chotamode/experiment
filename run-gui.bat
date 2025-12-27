@@ -1,13 +1,12 @@
 @echo off
-REM Quick Start Script for Kanji Collage Generator (Windows)
-REM Usage: run.bat [optional arguments for main.py]
+REM GUI Launcher for Kanji Collage Generator (Windows)
 
 setlocal enabledelayedexpansion
 
 set VENV_DIR=.venv
 
-echo 🎨 Kanji Collage Generator - Quick Start
-echo ========================================
+echo 🎨 Kanji Collage Generator - GUI
+echo ================================
 echo.
 
 REM Check if virtual environment exists
@@ -32,13 +31,8 @@ if not exist "%VENV_DIR%\Scripts\python.exe" (
     echo.
 )
 
-REM Run the application
-echo 🚀 Running Kanji Collage Generator...
-echo.
-
-%VENV_DIR%\Scripts\python.exe main.py %*
-
-echo.
-echo ✨ Done! Check the downloads\ folder for your collage.
+REM Run the GUI
+echo 🚀 Launching GUI...
+%VENV_DIR%\Scripts\pythonw.exe gui.py
 
 endlocal

@@ -2,7 +2,29 @@
 
 **Run in seconds without manual installation!**
 
-## 🚀 Fastest Method (Recommended)
+## 🖼️ GUI Mode (Recommended - Most User-Friendly)
+
+### Linux/Mac:
+```bash
+./run-gui.sh
+```
+
+### Windows:
+```batch
+run-gui.bat
+```
+
+**Features:**
+- 🎨 Beautiful graphical interface
+- 🎯 Built-in quick presets (Quick Test, Chaos Mode, Clean Grid, Wallpaper)
+- 📊 Real-time progress and logs
+- 🔧 Easy settings with sliders and dropdowns
+- 📁 One-click folder opening
+- No command-line knowledge needed!
+
+---
+
+## 💻 Command-Line Mode (For Advanced Users)
 
 ### Linux/Mac:
 ```bash
@@ -14,14 +36,41 @@
 run.bat
 ```
 
-That's it! The script will:
+**What happens:**
 - ✅ Auto-create a virtual environment (first time only)
 - ✅ Auto-install all dependencies (first time only)
 - ✅ Run the app immediately
 - ✅ Subsequent runs are instant!
 
-**First run**: ~30 seconds (downloads dependencies)
+**First run**: ~30 seconds with pip, or **2-3 seconds with uv** (see below)
 **After that**: Instant! ⚡
+
+---
+
+## ⚡ **ULTRA FAST**: Install with `uv` (10-100x faster!)
+
+Install `uv` for blazing-fast dependency installation:
+
+**Linux/Mac:**
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+**Windows (PowerShell):**
+```powershell
+powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
+
+**Then run normally:**
+```bash
+./run-gui.sh  # or ./run.sh
+```
+
+The script automatically detects and uses `uv` if available!
+
+**Speed comparison:**
+- With pip: ~30 seconds first install
+- With uv: **~2-3 seconds** ⚡⚡⚡
 
 ## 📝 With Custom Options
 

@@ -8,21 +8,57 @@ This application generates random Japanese kanji combinations to search for obsc
 
 **Want to run immediately without manual setup?**
 
-### Linux/Mac:
+### 🖼️ **GUI Mode** (Recommended - Easy & Visual):
+
+**Linux/Mac:**
+```bash
+./run-gui.sh
+```
+
+**Windows:**
+```batch
+run-gui.bat
+```
+
+### 💻 **Command Line Mode:**
+
+**Linux/Mac:**
 ```bash
 ./run.sh
 ```
 
-### Windows:
+**Windows:**
 ```batch
 run.bat
 ```
 
-Auto-installs everything on first run! See [QUICKSTART.md](QUICKSTART.md) for more options.
+**First run**: Auto-installs everything (~30 seconds, or **2-3 seconds with uv**!)
+**After that**: Instant startup! ⚡
+
+See [QUICKSTART.md](QUICKSTART.md) for more options and uv installation guide.
 
 ---
 
-## ✨ Features
+## 🖼️ GUI Features
+
+The graphical interface provides a comfortable, visual way to create collages:
+
+- **Easy Settings**: Sliders, dropdowns, and spinboxes for all options
+- **Quick Presets**: One-click presets for common use cases
+  - ⚡ Quick Test (fast, small output)
+  - 🎨 Chaos Mode (pure random, heavy effects)
+  - 🖼️ Clean Grid (organized, no effects)
+  - 🌈 Large Wallpaper (3000px, many images)
+- **Real-Time Progress**: See exactly what's happening during generation
+- **Live Logs**: Detailed generation logs with timestamps
+- **Folder Integration**: Open downloads folder with one click
+- **Cache Management**: Clear cache easily from the GUI
+
+**No command-line knowledge required!** Perfect for artists and casual users.
+
+---
+
+## ✨ Core Features
 
 - 🔮 **Random Kanji Generation**: Multiple modes for generating kanji queries
   - **Themed**: Uses curated kanji from categories (nature, mystical, abstract, etc.)
