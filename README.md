@@ -4,6 +4,24 @@
 
 This application generates random Japanese kanji combinations to search for obscure, unexpected, and often surreal images from the internet, then creates artistic collages with various visual effects.
 
+## ⚡ Super Fast Start
+
+**Want to run immediately without manual setup?**
+
+### Linux/Mac:
+```bash
+./run.sh
+```
+
+### Windows:
+```batch
+run.bat
+```
+
+Auto-installs everything on first run! See [QUICKSTART.md](QUICKSTART.md) for more options.
+
+---
+
 ## ✨ Features
 
 - 🔮 **Random Kanji Generation**: Multiple modes for generating kanji queries
