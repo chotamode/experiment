@@ -9,6 +9,28 @@ echo "🎨 Kanji Collage Generator - GUI"
 echo "================================"
 echo ""
 
+# Check for tkinter (required for GUI on Linux)
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    if ! python3 -c "import tkinter" &> /dev/null; then
+        echo "⚠️  tkinter is not installed!"
+        echo ""
+        echo "On Linux, tkinter needs to be installed separately:"
+        echo ""
+        echo "Ubuntu/Debian:"
+        echo "  sudo apt install python3-tk"
+        echo ""
+        echo "Fedora:"
+        echo "  sudo dnf install python3-tkinter"
+        echo ""
+        echo "Arch:"
+        echo "  sudo pacman -S tk"
+        echo ""
+        echo "After installing, run this script again."
+        echo ""
+        exit 1
+    fi
+fi
+
 # Check if virtual environment exists
 if [ ! -d "$VENV_DIR" ]; then
     echo "📦 First-time setup: Creating virtual environment..."

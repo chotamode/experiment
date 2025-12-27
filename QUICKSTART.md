@@ -2,6 +2,31 @@
 
 **Run in seconds without manual installation!**
 
+## 📋 System Requirements (Linux GUI Users Only)
+
+**If you're using the GUI on Linux**, you need to install tkinter first:
+
+**Ubuntu/Debian:**
+```bash
+sudo apt install python3-tk
+```
+
+**Fedora:**
+```bash
+sudo dnf install python3-tkinter
+```
+
+**Arch:**
+```bash
+sudo pacman -S tk
+```
+
+**macOS/Windows:** tkinter is included with Python, no extra steps needed!
+
+**Don't want to install tkinter?** Use the command-line mode instead (see below).
+
+---
+
 ## 🖼️ GUI Mode (Recommended - Most User-Friendly)
 
 ### Linux/Mac:

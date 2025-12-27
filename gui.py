@@ -3,8 +3,24 @@
 Kanji Collage Generator - GUI Application
 Beautiful graphical interface for creating collages
 """
-import tkinter as tk
-from tkinter import ttk, scrolledtext, messagebox
+import sys
+
+# Check for tkinter availability
+try:
+    import tkinter as tk
+    from tkinter import ttk, scrolledtext, messagebox
+except ImportError:
+    print("\n❌ ERROR: tkinter is not installed!\n")
+    print("The GUI requires tkinter, which is not available in your Python installation.\n")
+    print("On Linux, install it with:")
+    print("  Ubuntu/Debian: sudo apt install python3-tk")
+    print("  Fedora:        sudo dnf install python3-tkinter")
+    print("  Arch:          sudo pacman -S tk\n")
+    print("On macOS/Windows, tkinter should be included with Python.\n")
+    print("Alternatively, use the command-line interface:")
+    print("  ./run.sh --help\n")
+    sys.exit(1)
+
 import threading
 import queue
 import os

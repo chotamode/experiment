@@ -10,6 +10,8 @@ This application generates random Japanese kanji combinations to search for obsc
 
 ### 🖼️ **GUI Mode** (Recommended - Easy & Visual):
 
+> **Linux users:** Install `python3-tk` first: `sudo apt install python3-tk` (Ubuntu/Debian)
+
 **Linux/Mac:**
 ```bash
 ./run-gui.sh
